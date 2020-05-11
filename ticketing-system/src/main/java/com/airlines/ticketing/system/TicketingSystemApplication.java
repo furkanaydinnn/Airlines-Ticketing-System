@@ -1,4 +1,4 @@
-package com.airlinesticketingsystem;
+package com.airlines.ticketing.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
