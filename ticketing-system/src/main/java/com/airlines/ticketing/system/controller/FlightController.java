@@ -3,6 +3,7 @@ package com.airlines.ticketing.system.controller;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.airlines.ticketing.system.entity.Flight;
+import com.airlines.ticketing.system.entity.Ticket;
 import com.airlines.ticketing.system.exception.FlightNotFoundException;
 import com.airlines.ticketing.system.repository.FlightRepository;
 
@@ -129,8 +131,9 @@ public class FlightController {
 			
 			Flight currentFlight = tempFlight.get();
 			currentFlight.setPassengerCapacity(flight.getPassengerCapacity());
+			currentFlight.getTickets().forEach(t -> t.setPrice(t.getPrice() + t.getPrice()*10/100));
+			
 			flightRepository.save(currentFlight);
-			// here, price will be updated later..
 			return ResponseEntity.ok(currentFlight);
 		}
 		catch(FlightNotFoundException ex) {
