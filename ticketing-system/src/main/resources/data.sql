@@ -16,5 +16,11 @@ insert into flight(from_Where,passenger_Capacity,to_Where,company_Id) values('Is
 insert into flight(from_Where,passenger_Capacity,to_Where,company_Id) values('IzmirAndanMendere', 130,'SabihaGokcen', 4);
 
 
+insert into ticket(boarding_Time,card_Number,company,gate_number,price,seat_number,flight_id) values(NOW(),'455########5678','Pegasus',245,300,'23A',1);
+
+
+
+
+
 
 

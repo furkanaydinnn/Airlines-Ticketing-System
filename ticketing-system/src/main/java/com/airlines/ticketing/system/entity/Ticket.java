@@ -13,6 +13,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -49,7 +50,6 @@ public class Ticket {
 	private String cardNumber;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	//@JsonIgnore
 	private Flight flight;
 
 	public Ticket() {
@@ -130,6 +130,7 @@ public class Ticket {
 		return flight;
 	}
 
+	@JsonProperty
 	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
