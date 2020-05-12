@@ -64,13 +64,13 @@ public class CompanyController {
 
 		try {
 
-			Optional<Company> company = companyRepository.findByNameContainingIgnoreCase(name);
+			List<Company> companies = companyRepository.findByNameContainingIgnoreCase(name);
 
-			if (!company.isPresent()) {
+			if (companies.isEmpty()) {
 				throw new CompanyNotFoundException("name : " + name);
 			}
 
-			return ResponseEntity.ok(company.get());
+			return ResponseEntity.ok(companies);
 
 		} catch (CompanyNotFoundException ex) {
 			return ResponseEntity.notFound().build();

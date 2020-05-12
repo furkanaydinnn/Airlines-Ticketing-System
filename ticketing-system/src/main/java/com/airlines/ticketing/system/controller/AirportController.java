@@ -62,12 +62,12 @@ public class AirportController {
 		
 		try {
 			
-			Optional<Airport> airport =  airportRepository.findByNameContainingIgnoreCase(name);
-			if(!airport.isPresent()) {
+			List<Airport> airports =  airportRepository.findByNameContainingIgnoreCase(name);
+			if(airports.isEmpty()) {
 				throw new AirportNotFoundException("name : " + name);
 			}
 			
-			return ResponseEntity.ok(airport);
+			return ResponseEntity.ok(airports);
 		}
 		catch(AirportNotFoundException ex) {
 			return ResponseEntity.notFound().build();
