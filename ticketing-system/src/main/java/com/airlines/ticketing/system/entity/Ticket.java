@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(value="Ticket Details", description="Contains all details of a ticket")
 @Entity
 public class Ticket {
 

@@ -7,7 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="Company Details", description="Contains all details of a company")
 @Entity
 public class Company {
 
@@ -15,6 +20,8 @@ public class Company {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Size(min=2, message="Name should be at least 2 characters")
+	@ApiModelProperty(notes = "Name should have at least 2 characters")
 	private String name;
 
 	@OneToMany(mappedBy = "company")

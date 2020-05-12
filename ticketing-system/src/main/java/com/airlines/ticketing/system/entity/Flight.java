@@ -9,9 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="Flight Details", description="Contains all details of a flight")
 @Entity
 public class Flight {
 
@@ -19,10 +25,16 @@ public class Flight {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Size(min=5, message="fromWhere should be at least 2 characters")
+	@ApiModelProperty(notes = "fromWhere should have at least 5 characters")
 	private String fromWhere;
 
+	@Size(min=5, message="fromTo should be at least 2 characters")
+	@ApiModelProperty(notes = "fromTo should have at least 5 characters")
 	private String toWhere;
 
+	@Positive
+	@ApiModelProperty(notes = "passengerCapacity should be bigger then zero")
 	private Integer passengerCapacity;
 
 	@ManyToOne(fetch = FetchType.LAZY)
