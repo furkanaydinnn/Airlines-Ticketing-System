@@ -78,6 +78,7 @@ public class Flight {
 		this.passengerCapacity = passengerCapacity;
 	}
 
+	@JsonIgnore
 	public Company getCompany() {
 		return company;
 	}

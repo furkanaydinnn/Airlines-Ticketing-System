@@ -31,7 +31,7 @@ public class Ticket {
 	private String cardNumber;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnore
+	//@JsonIgnore
 	private Flight flight;
 
 	public Ticket() {
@@ -107,6 +107,7 @@ public class Ticket {
 		this.cardNumber = cardNumber;
 	}
 
+	@JsonIgnore
 	public Flight getFlight() {
 		return flight;
 	}
