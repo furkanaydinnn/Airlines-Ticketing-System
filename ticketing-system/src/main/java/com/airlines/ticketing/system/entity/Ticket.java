@@ -8,10 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value="Ticket Details", description="Contains all details of a ticket")
 @Entity
@@ -21,16 +25,27 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ticketNumber;
 
+	@Size(min=2, message="company should be at least 2 characters")
+	@ApiModelProperty(notes = "company should have at least 5 characters")
 	private String company;
 
+	@Positive
+	@ApiModelProperty(notes = "gateNumber should be bigger then zero")
 	private Integer gateNumber;
 
+	@Positive
+	@ApiModelProperty(notes = "seatNumber should be bigger then zero")
 	private String seatNumber;
 
+	@FutureOrPresent
+	@ApiModelProperty(notes = "boardingTime should be present or future")
 	private Date boardingTime;
 
+	@Positive
+	@ApiModelProperty(notes = "price should be bigger then zero")
 	private Float price;
 
+	@Size(min=16, message="cardNumber should be at least 16 characters")
 	private String cardNumber;
 
 	@ManyToOne(fetch = FetchType.LAZY)
