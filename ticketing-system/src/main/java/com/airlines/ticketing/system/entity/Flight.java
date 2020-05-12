@@ -13,6 +13,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -38,7 +39,6 @@ public class Flight {
 	private Integer passengerCapacity;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	// @JsonIgnore
 	private Company company;
 
 	@OneToMany(mappedBy = "flight")
@@ -95,6 +95,7 @@ public class Flight {
 		return company;
 	}
 
+	@JsonProperty
 	public void setCompany(Company company) {
 		this.company = company;
 	}

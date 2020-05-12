@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -55,10 +57,12 @@ public class Company {
 		this.name = name;
 	}
 
+	
 	public List<Flight> getFlightList() {
 		return flightList;
 	}
 
+	//@JsonIgnore
 	public void setFlightList(List<Flight> flightList) {
 		this.flightList = flightList;
 	}
