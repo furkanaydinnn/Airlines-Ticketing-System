@@ -26,9 +26,9 @@ public class Flight {
 	private Integer passengerCapacity;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	//@JsonIgnore
+	// @JsonIgnore
 	private Company company;
-	
+
 	@OneToMany(mappedBy = "flight")
 	private List<Ticket> tickets;
 
@@ -84,6 +84,14 @@ public class Flight {
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
 	}
 
 }

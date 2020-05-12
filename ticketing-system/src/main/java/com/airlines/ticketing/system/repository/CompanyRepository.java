@@ -12,6 +12,6 @@ import com.airlines.ticketing.system.entity.Company;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 	
-	Optional<Company> findByName(@RequestParam("name") String name);
+	Optional<Company> findByNameContainingIgnoreCase(@RequestParam("name") String name);
 
 }

@@ -64,7 +64,7 @@ public class CompanyController {
 
 		try {
 
-			Optional<Company> company = companyRepository.findByName(name);
+			Optional<Company> company = companyRepository.findByNameContainingIgnoreCase(name);
 
 			if (!company.isPresent()) {
 				throw new CompanyNotFoundException("name : " + name);
